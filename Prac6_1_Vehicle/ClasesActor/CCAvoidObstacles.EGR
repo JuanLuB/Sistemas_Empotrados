@@ -1,0 +1,382 @@
+[Version Actor SW]
+5
+0
+0
+0
+0
+[Modificado]
+0
+0
+0
+[Estructura]
+[Version Estructura]
+3
+[Parametro]
+NULL
+ 
+ 
+[FinParametro]
+[Stack]
+1
+[FinStack]
+[Puertos]
+2
+[Version Puerto]
+0
+Timer
+0
+1
+1
+[Version Grafico Puerto]
+0
+20
+43
+EDROOMTimingSAP
+[Version Puerto]
+0
+AvoidObstaclesSysCtrl
+0
+1
+0
+[Version Grafico Puerto]
+0
+40
+4
+CPAvoidObstaclesSysCtrl
+[FinPuertos]
+[ActoresComponente]
+0
+[FinActoresComponente]
+[Uniones]
+0
+[FinUniones]
+[NumTimers]
+2
+[FinNumTimers]
+[NumMsgDef]
+10
+[FinNumMsgDef]
+[FinEstructura]
+[Comportamiento]
+[Version Comportamiento]
+3
+0
+[Pools]
+0
+[Modulos]
+3
+[Version Modulo]
+1
+sensors_iface
+ 
+v1
+ 
+1
+1
+[Version Modulo]
+1
+io_ctrl_iface
+ 
+v1
+ 
+1
+1
+[Version Modulo]
+1
+actuators_iface
+ 
+v1
+ 
+1
+1
+[Eventos]
+1
+[Event]
+[Version]
+1
+EvTimerTimer
+Timer
+[Maquina de Estados]
+[Version Maquina de Estados]
+1
+Top
+NULL
+[Subestados]
+3
+[Version SubEstados]
+3
+I
+;
+;
+;
+;
+;
+0
+0
+[ObjetoGrafico]
+[Version Objeto Grafico]
+0
+73 73 55 55
+[FinObjetoGrafico]
+Idle
+;
+;
+;
+;
+;
+1
+0
+[ObjetoGrafico]
+[Version Objeto Grafico]
+0
+257 203 150 111
+[FinObjetoGrafico]
+Ready
+FProgNExtDetection();
+;
+;
+;
+;
+1
+0
+[ObjetoGrafico]
+[Version Objeto Grafico]
+0
+248 421 175 159
+[FinObjetoGrafico]
+[PuntosEleccion]
+1
+[Version PuntosEleccion]
+2
+CheckObstacles
+0
+[ObjetoGrafico]
+[Version Objeto Grafico]
+0
+568 485 35 35
+[FinObjetoGrafico]
+CheckObstacles
+0
+[Ramas]
+2
+[Version Ramas]
+5
+NoObstacle
+true
+Ready
+DSubEst
+;
+ 
+ 
+ 
+;
+;
+;
+;
+[GraficoRama]
+[Version GraficoRama]
+0
+585 485 423 439 3
+[FinGraficoRama]
+ObstDetected
+GObsDetected()
+Ready
+DSubEst
+;
+ 
+ 
+ 
+;
+FHandleObstacle();
+;
+;
+[GraficoRama]
+[Version GraficoRama]
+0
+585 519 423 548 2
+[FinGraficoRama]
+[Transiciones]
+4
+[Version Transicion]
+5
+Init
+I
+OSubEstI
+Idle
+DSubEst
+;
+[Trigger]
+EDROOMsl
+EDROOMStart
+true
+ 
+ 
+ 
+;
+;
+;
+0
+;
+[GraficoTransicion]
+[Version GraficoTransicion]
+0
+123 113 257 235 0
+[FinGraficoTransicion]
+Config
+Idle
+OSubEst
+Idle
+DSubEst
+;
+[Trigger]
+AvoidObstaclesSysCtrl
+SConfigAO
+true
+ 
+ 
+ 
+;
+;
+FConfigOK();
+1
+;
+[GraficoTransicion]
+[Version GraficoTransicion]
+0
+294 203 370 203 4
+[FinGraficoTransicion]
+Start
+Idle
+OSubEst
+Ready
+DSubEst
+;
+[Trigger]
+AvoidObstaclesSysCtrl
+SStart
+true
+ 
+ 
+ 
+;
+;
+;
+0
+;
+[GraficoTransicion]
+[Version GraficoTransicion]
+0
+329 314 332 421 0
+[FinGraficoTransicion]
+CheckObstacles
+Ready
+OSubEst
+CheckObstacles
+DPEleccion
+FCheckObstacles();
+[Trigger]
+Timer
+EDROOMSignalTimeout
+true
+ 
+ 
+ 
+;
+;
+;
+0
+;
+[GraficoTransicion]
+[Version GraficoTransicion]
+0
+423 500 568 502 0
+[FinGraficoTransicion]
+[VariablesConstantes]
+1
+[Version VariYConst]
+0
+VObsDetected
+TEDROOMBool
+
+Variable
+0
+[Metodos]
+5
+[Version Metodos]
+21
+BasicAction
+FCheckObstacles()
+0
+0
+0
+0
+1
+ 
+2
+	io_ctrl_check_obstacles();
+	VObsDetected=sensors_check_obstacles();
+ReplyMsg
+FConfigOK()
+0
+0
+0
+0
+1
+ 
+0
+[ServiceRequest]
+Msg->reply
+AvoidObstaclesSysCtrl
+SConfigOK
+NULL
+EDROOMprioVeryHigh
+SendMsg
+FHandleObstacle()
+0
+0
+0
+0
+1
+ 
+2
+	io_ctrl_detect_obstacle();
+	actuators_halt();
+[ServiceRequest]
+send
+AvoidObstaclesSysCtrl
+SObstacleDetected
+NULL
+EDROOMprioNormal
+Inform
+FProgNExtDetection()
+0
+0
+0
+0
+1
+ 
+3
+	 
+	 
+	interval = Pr_Time(0,50000);
+[ServiceRequest]
+InformIn
+Timer
+EDROOMSignalTimeout
+NULL
+EDROOMprioVeryHigh
+Guard
+GObsDetected()
+0
+0
+0
+0
+1
+ 
+1
+	return (VObsDetected);
+[MaquinasSubEstados]
+0
+[FinMaquinasSubEstados]
+[Fin Maquina de Estados]
+[FinComportamiento]

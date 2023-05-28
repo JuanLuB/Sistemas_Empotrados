@@ -1,0 +1,84 @@
+[Version Protocolo]
+9
+0
+0
+0
+0
+0
+4
+[Version Mensaje]
+1
+[Version Senal]
+0
+SStartPlanning
+[Version Dato]
+1
+NULL
+C:\Users\victorsanavia\Documents\EDROOM\Models\Prac6_1_Vehicle\
+es.uah.aut.srg.edroom.mclev.data_sai.NULL
+v1
+0
+[Version Mensaje]
+1
+[Version Senal]
+0
+SNewTargetLocation
+[Version Dato]
+1
+CDLocation
+C:\Users\victorsanavia\Documents\EDROOM\Models\Prac6_1_Vehicle\
+iface
+v1
+0
+[Version Mensaje]
+1
+[Version Senal]
+0
+SMarkObstacle
+[Version Dato]
+1
+CDLocation
+C:\Users\victorsanavia\Documents\EDROOM\Models\Prac6_1_Vehicle\
+iface
+v1
+0
+[Version Mensaje]
+1
+[Version Senal]
+0
+SConfigPathPlanner
+[Version Dato]
+1
+CDLocation
+C:\Users\victorsanavia\Documents\EDROOM\Models\Prac6_1_Vehicle\
+iface
+v1
+1
+2
+[Version Mensaje]
+1
+[Version Senal]
+0
+SConfigOK
+[Version Dato]
+1
+NULL
+C:\Users\victorsanavia\Documents\EDROOM\Models\Prac6_1_Vehicle\
+es.uah.aut.srg.edroom.mclev.data_sai.NULL
+v1
+2
+SConfigPathPlanner
+[Version Mensaje]
+1
+[Version Senal]
+0
+SConfigError
+[Version Dato]
+1
+NULL
+C:\Users\victorsanavia\Documents\EDROOM\Models\Prac6_1_Vehicle\
+es.uah.aut.srg.edroom.mclev.data_sai.NULL
+v1
+2
+SConfigPathPlanner
+0

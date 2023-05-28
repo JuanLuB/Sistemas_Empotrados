@@ -1,0 +1,34 @@
+[Version Protocolo]
+9
+0
+0
+0
+0
+0
+1
+[Version Mensaje]
+1
+[Version Senal]
+0
+STrackPath
+[Version Dato]
+1
+CDPath
+Z:\home\espectro90\Documents\EDROOM\Models\Prac6_1_Vehicle\
+iface
+v1
+0
+1
+[Version Mensaje]
+1
+[Version Senal]
+0
+SPathRequest
+[Version Dato]
+1
+NULL
+Z:\home\espectro90\Documents\EDROOM\Models\Prac6_1_Vehicle\
+es.uah.aut.srg.edroom.mclev.data_sai.NULL
+v1
+0
+0

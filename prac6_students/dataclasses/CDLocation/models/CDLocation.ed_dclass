@@ -1,0 +1,9 @@
+dataclass CDLocation{
+
+
+
+	uri := iface.cdlocation_iface;
+	version := v1;
+
+
+};

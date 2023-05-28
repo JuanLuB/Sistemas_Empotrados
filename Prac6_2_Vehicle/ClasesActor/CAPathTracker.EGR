@@ -1,0 +1,633 @@
+[Version Actor SW]
+5
+0
+0
+0
+0
+[Modificado]
+0
+0
+0
+[Estructura]
+[Version Estructura]
+3
+[Parametro]
+NULL
+ 
+ 
+[FinParametro]
+[Stack]
+2
+[FinStack]
+[Puertos]
+3
+[Version Puerto]
+0
+PathTrackerCtrl
+0
+1
+0
+[Version Grafico Puerto]
+0
+4
+42
+CPPathTrackerCtrl
+[Version Puerto]
+0
+TrackPath
+0
+1
+0
+[Version Grafico Puerto]
+0
+46
+4
+CPTrackPath
+[Version Puerto]
+0
+Timer
+0
+1
+1
+[Version Grafico Puerto]
+0
+75
+40
+EDROOMTimingSAP
+[FinPuertos]
+[ActoresComponente]
+0
+[FinActoresComponente]
+[Uniones]
+0
+[FinUniones]
+[NumTimers]
+2
+[FinNumTimers]
+[NumMsgDef]
+10
+[FinNumMsgDef]
+[FinEstructura]
+[Comportamiento]
+[Version Comportamiento]
+3
+0
+[Pools]
+0
+[Modulos]
+2
+[Version Modulo]
+1
+actuators_iface
+ 
+v1
+ 
+1
+1
+[Version Modulo]
+1
+io_ctrl_iface
+ 
+v1
+ 
+1
+1
+[Eventos]
+1
+[Event]
+[Version]
+1
+EvTimerTimer
+Timer
+[Maquina de Estados]
+[Version Maquina de Estados]
+1
+Top
+NULL
+[Subestados]
+5
+[Version SubEstados]
+3
+I
+;
+;
+;
+;
+;
+0
+0
+[ObjetoGrafico]
+[Version Objeto Grafico]
+0
+73 73 55 55
+[FinObjetoGrafico]
+Idle
+;
+;
+;
+;
+;
+1
+0
+[ObjetoGrafico]
+[Version Objeto Grafico]
+0
+158 197 157 67
+[FinObjetoGrafico]
+StandBy
+;
+;
+;
+;
+;
+1
+0
+[ObjetoGrafico]
+[Version Objeto Grafico]
+0
+166 319 140 61
+[FinObjetoGrafico]
+TrackingPath
+;
+;
+;
+;
+;
+1
+0
+[ObjetoGrafico]
+[Version Objeto Grafico]
+0
+175 460 129 146
+[FinObjetoGrafico]
+Pause
+;
+;
+;
+;
+;
+1
+0
+[ObjetoGrafico]
+[Version Objeto Grafico]
+0
+417 331 90 280
+[FinObjetoGrafico]
+[PuntosEleccion]
+2
+[Version PuntosEleccion]
+2
+PathStep
+0
+[ObjetoGrafico]
+[Version Objeto Grafico]
+0
+59 498 35 35
+[FinObjetoGrafico]
+Config
+0
+[ObjetoGrafico]
+[Version Objeto Grafico]
+0
+221 72 35 35
+[FinObjetoGrafico]
+PathStep
+0
+[Ramas]
+2
+[Version Ramas]
+5
+LastStep
+GLastStep()
+StandBy
+DSubEst
+;
+ 
+ 
+ 
+;
+FSendPathRequest();
+;
+;
+[GraficoRama]
+[Version GraficoRama]
+0
+76 498 184 380 1
+[FinGraficoRama]
+toNextStep
+true
+TrackingPath
+DSubEst
+FProgNextTrackStep();
+ 
+ 
+ 
+;
+;
+;
+;
+[GraficoRama]
+[Version GraficoRama]
+0
+93 515 175 513 1
+[FinGraficoRama]
+Config
+0
+[Ramas]
+2
+[Version Ramas]
+5
+OK
+true
+Idle
+DSubEst
+;
+ 
+ 
+ 
+;
+;
+FReplyOK();
+;
+[GraficoRama]
+[Version GraficoRama]
+0
+221 89 171 197 2
+[FinGraficoRama]
+Error
+VSimError
+Idle
+DSubEst
+FSimError();
+ 
+ 
+ 
+;
+;
+FReplySimError();
+;
+[GraficoRama]
+[Version GraficoRama]
+0
+255 89 299 197 0
+[FinGraficoRama]
+[Transiciones]
+8
+[Version Transicion]
+5
+Init
+I
+OSubEstI
+Idle
+DSubEst
+;
+[Trigger]
+EDROOMsl
+EDROOMStart
+true
+ 
+ 
+ 
+;
+;
+;
+0
+;
+[GraficoTransicion]
+[Version GraficoTransicion]
+0
+108 125 158 224 0
+[FinGraficoTransicion]
+NewPath
+StandBy
+OSubEst
+TrackingPath
+DSubEst
+FProgFirstTrackStep();
+[Trigger]
+TrackPath
+STrackPath
+true
+ 
+ 
+ 
+FGetNewPatch();
+;
+;
+0
+;
+[GraficoTransicion]
+[Version GraficoTransicion]
+0
+236 380 235 460 2
+[FinGraficoTransicion]
+PathStep
+TrackingPath
+OSubEst
+PathStep
+DPEleccion
+FGoToPathStep();
+[Trigger]
+Timer
+EDROOMSignalTimeout
+true
+ 
+ 
+ 
+;
+;
+;
+0
+;
+[GraficoTransicion]
+[Version GraficoTransicion]
+0
+175 580 76 532 3
+[FinGraficoTransicion]
+Config
+Idle
+OSubEst
+Config
+DPEleccion
+;
+[Trigger]
+PathTrackerCtrl
+SConfigPathTracker
+true
+ 
+ 
+ 
+;
+;
+;
+1
+;
+[GraficoTransicion]
+[Version GraficoTransicion]
+0
+237 197 238 106 1
+[FinGraficoTransicion]
+Start
+Idle
+OSubEst
+StandBy
+DSubEst
+;
+[Trigger]
+PathTrackerCtrl
+SStartTracking
+true
+ 
+ 
+ 
+;
+;
+;
+0
+;
+[GraficoTransicion]
+[Version GraficoTransicion]
+0
+233 264 234 319 0
+[FinGraficoTransicion]
+StopTrack
+TrackingPath
+OSubEst
+Pause
+DSubEst
+;
+[Trigger]
+PathTrackerCtrl
+SStopTracking
+true
+ 
+ 
+ 
+;
+;
+;
+0
+;
+[GraficoTransicion]
+[Version GraficoTransicion]
+0
+304 573 417 573 1
+[FinGraficoTransicion]
+ResumePath
+Pause
+OSubEst
+TrackingPath
+DSubEst
+;
+[Trigger]
+TrackPath
+STrackPath
+true
+ 
+ 
+ 
+FGetNewPatch();
+;
+;
+0
+;
+[GraficoTransicion]
+[Version GraficoTransicion]
+0
+417 500 304 500 2
+[FinGraficoTransicion]
+ToStandBy
+Pause
+OSubEst
+StandBy
+DSubEst
+;
+[Trigger]
+Timer
+EDROOMSignalTimeout
+true
+ 
+ 
+ 
+;
+;
+;
+0
+;
+[GraficoTransicion]
+[Version GraficoTransicion]
+0
+417 351 306 351 2
+[FinGraficoTransicion]
+[VariablesConstantes]
+3
+[Version VariYConst]
+0
+VCurrentPath
+CDPath
+
+Variable
+0
+[Version VariYConst]
+0
+VCurrentPathStep
+TEDROOMUInt8
+0
+Variable
+0
+[Version VariYConst]
+0
+VSimError
+TEDROOMUInt8
+2
+Variable
+0
+[Metodos]
+8
+[Version Metodos]
+21
+MsgDataHandler
+FGetNewPatch()
+0
+0
+0
+0
+1
+ 
+6
+	
+		// Data access
+ 
+	VCurrentPath = varSTrackPath;
+ 
+ 	VCurrentPathStep=0;
+[ServiceRequest]
+Msg->data
+TrackPath
+STrackPath
+CDPath
+EDROOMprioVeryHigh
+BasicAction
+FGoToPathStep()
+0
+0
+0
+0
+0
+8
+{
+ io_ctrl_go_to_path_step(VCurrentPathStep);
+ 
+ actuators_go_to_location(VCurrentPath.pathLocations[VCurrentPathStep]);
+ 
+ VCurrentPathStep++;
+ 
+}
+Inform
+FProgFirstTrackStep()
+0
+0
+0
+0
+1
+ 
+4
+	 
+	//Timing Service useful methods
+	 
+ interval = Pr_Time(0,10000); // interval of X sec + Y microsec
+[ServiceRequest]
+InformIn
+Timer
+EDROOMSignalTimeout
+NULL
+EDROOMprioNormal
+Inform
+FProgNextTrackStep()
+0
+0
+0
+0
+1
+ 
+4
+	 
+	//Timing Service useful methods
+	 
+  interval = Pr_Time(0,400000); // interval of X sec + Y microsec
+[ServiceRequest]
+InformIn
+Timer
+EDROOMSignalTimeout
+NULL
+EDROOMprioVeryHigh
+ReplyMsg
+FReplyOK()
+0
+0
+0
+0
+1
+ 
+1
+actuators_start();
+[ServiceRequest]
+Msg->reply
+PathTrackerCtrl
+SConfigOK
+NULL
+EDROOMprioVeryHigh
+ReplyMsg
+FReplySimError()
+0
+0
+0
+0
+1
+ 
+3
+ 
+ 
+  VSimError--;
+[ServiceRequest]
+Msg->reply
+PathTrackerCtrl
+SConfigError
+NULL
+EDROOMprioVeryHigh
+SendMsg
+FSendPathRequest()
+0
+0
+0
+0
+1
+ 
+0
+[ServiceRequest]
+send
+TrackPath
+SPathRequest
+NULL
+EDROOMprioNormal
+Guard
+GLastStep()
+0
+0
+0
+0
+0
+8
+{
+ 
+	return (VCurrentPathStep>=VCurrentPath.pathSteps);
+ 
+ 
+ 
+ 
+}
+[MaquinasSubEstados]
+0
+[FinMaquinasSubEstados]
+[Fin Maquina de Estados]
+[FinComportamiento]

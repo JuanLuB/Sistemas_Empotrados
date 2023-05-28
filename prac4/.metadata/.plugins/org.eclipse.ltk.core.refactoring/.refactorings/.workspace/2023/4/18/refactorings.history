@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete 9 resources" deleteContents="false" description="Delete 9 resources" element1="/prac4b/Debug/src/leon3_bprint.o" element2="/prac4b/Debug/src/leon3_ev_handling_asm.o" element3="/prac4b/Debug/src/leon3_ev_handling.o" element4="/prac4b/Debug/src/leon3_hw_irqs.o" element5="/prac4b/Debug/src/leon3_monotonic_clk.o" element6="/prac4b/Debug/src/leon3_timer_unit_drv.o" element7="/prac4b/Debug/src/leon3_timing_service.o" element8="/prac4b/Debug/src/leon3_uart.o" element9="/prac4b/Debug/src/main.o" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="9" stamp="1682892197175"/>
+</session>

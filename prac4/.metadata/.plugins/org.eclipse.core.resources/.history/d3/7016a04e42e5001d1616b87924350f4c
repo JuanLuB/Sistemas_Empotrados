@@ -1,0 +1,90 @@
+/*
+ * leon3_uart.c
+ *
+ *  Created on: 21/03/2022
+ *      Author: cristina
+ */
+
+#include "leon3_uart.h"
+
+#define LEON3_UART_TFF (0x200)
+#define LEON3_UART_TFE (0x004)
+#define LEON3_UART_RE  (1 << 0)
+#define LEON3_UART_RIE (1 << 2)
+#define LEON3_UART_LB (1 << 7)
+
+#define leon3_UART_TF_IS_FULL()(LEON3_UART_TFF&pLEON3_UART_REGS->Status)
+
+struct UART_regs{
+	volatile uint32_t Data;		/*0x80000100*/
+	volatile uint32_t Status;	/*0x80000104*/
+	volatile uint32_t Ctrl;		/*0x80000108*/
+	volatile uint32_t Scaler;	/*0x8000010C*/
+};
+
+struct UART_regs * const pLEON3_UART_REGS = (struct UART_regs *)0x80000100;
+
+int8_t leon3_putchar(char c){
+	uint32_t write_timeout=0;
+	while(leon3_UART_TF_IS_FULL()&&(write_timeout < 0xAAAAA)){
+		write_timeout++;
+	}
+
+	if (write_timeout == 0xAAAAA){
+		pLEON3_UART_REGS->Data=c;
+
+	}
+
+	return (write_timeout == 0xAAAAA);
+}
+
+int8_t leon3_uart_tx_fifo_is_empty(){
+	return (LEON3_UART_TFF&pLEON3_UART_REGS->Status);
+}
+
+char leon3_getchar(){
+	char c;
+	c = pLEON3_UART_REGS->Data;
+	return c;
+}
+void leon3_uart_ctrl_rx_enable(){
+	pLEON3_UART_REGS->Status = ~pLEON3_UART_REGS->Status | LEON3_UART_RE;
+
+}
+void leon3_uart_ctrl_rx_irq_enable(){
+	pLEON3_UART_REGS->Status = ~pLEON3_UART_REGS->Status | LEON3_UART_RIE;
+}
+
+void leon3_uart_ctrl_config_rxtx_loop(uint8_t set_rxtxloop){
+
+	if (set_rxtxloop == 1){
+		pLEON3_UART_REGS->Status = ~pLEON3_UART_REGS->Status | LEON3_UART_LB;
+	} else if (set_rxtxloop == 0){
+		pLEON3_UART_REGS->Status = ~pLEON3_UART_REGS->Status & LEON3_UART_LB;
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

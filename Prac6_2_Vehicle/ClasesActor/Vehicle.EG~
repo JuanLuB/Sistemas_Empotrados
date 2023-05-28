@@ -1,0 +1,873 @@
+[Version Actor SW]
+5
+0
+0
+0
+0
+[Modificado]
+0
+0
+0
+[Estructura]
+[Version Estructura]
+3
+[Parametro]
+NULL
+ 
+ 
+[FinParametro]
+[Stack]
+1
+[FinStack]
+[Puertos]
+4
+[Version Puerto]
+0
+PathTrackerCtrl
+1
+1
+1
+[Version Grafico Puerto]
+0
+40
+70
+CPPathTrackerCtrl
+[Version Puerto]
+0
+PathPlannerCtrl
+1
+1
+1
+[Version Grafico Puerto]
+0
+69
+12
+CPPathPlannerCtrl
+[Version Puerto]
+0
+Timer
+0
+1
+1
+[Version Grafico Puerto]
+0
+17
+70
+EDROOMTimingSAP
+[Version Puerto]
+0
+AvoidObstaclesSysCtrl
+1
+1
+1
+[Version Grafico Puerto]
+0
+15
+11
+CPAvoidObstaclesSysCtrl
+[FinPuertos]
+[ActoresComponente]
+3
+[Version Actor Componente]
+2
+PathPlanner
+1
+0
+-1
+10
+7
+EDROOMprioVeryLow
+ 
+[Version Grafico Actor Componente]
+0
+60.5468
+27.9261
+82.6172
+50.1027
+CAPathPlanner
+[Version Actor Componente]
+2
+PathTracker
+1
+0
+-1
+10
+7
+EDROOMprioNormal
+ 
+[Version Grafico Actor Componente]
+0
+59.7656
+61.6016
+81.25
+85.6263
+CAPathTracker
+[Version Actor Componente]
+2
+AvoidObstaclesIRQ
+1
+0
+0
+10
+7
+EDROOMprioNormal
+ 
+[Version Grafico Actor Componente]
+0
+13.8672
+31.2115
+31.4453
+53.7988
+CCAvoidObstaclesIRQ
+[FinActoresComponente]
+[Uniones]
+4
+[Version Union]
+0
+Union2
+1
+PathPlannerCtrl
+PathPlannerCtrl
+this
+PathPlanner
+[Version Union]
+0
+Union3
+1
+PathTrackerCtrl
+PathTrackerCtrl
+this
+PathTracker
+[Version Union]
+0
+Union4
+1
+TrackPath
+TrackPath
+PathPlanner
+PathTracker
+[Version Union]
+0
+Union
+1
+AvoidObstaclesSysCtrl
+AvoidObstaclesSysCtrl
+AvoidObstaclesIRQ
+this
+[FinUniones]
+[NumTimers]
+2
+[FinNumTimers]
+[NumMsgDef]
+10
+[FinNumMsgDef]
+[FinEstructura]
+[Comportamiento]
+[Version Comportamiento]
+3
+0
+[Pools]
+1
+[Version PoolDatosMens]
+0
+EDROOMPoolCDLocation
+CDLocation
+10
+[Modulos]
+2
+[Version Modulo]
+1
+sensors_iface
+ 
+v1
+ 
+1
+1
+[Version Modulo]
+1
+io_ctrl_iface
+ 
+v1
+ 
+1
+1
+[Eventos]
+1
+[Event]
+[Version]
+1
+EvTimerTimer
+Timer
+[Maquina de Estados]
+[Version Maquina de Estados]
+1
+Top
+NULL
+[Subestados]
+6
+[Version SubEstados]
+3
+I
+;
+;
+;
+;
+;
+0
+0
+[ObjetoGrafico]
+[Version Objeto Grafico]
+0
+73 73 55 55
+[FinObjetoGrafico]
+StartUp
+FCStartUp();
+;
+;
+;
+;
+1
+0
+[ObjetoGrafico]
+[Version Objeto Grafico]
+0
+164 138 90 60
+[FinObjetoGrafico]
+VehicleReady
+;
+;
+;
+;
+;
+1
+0
+[ObjetoGrafico]
+[Version Objeto Grafico]
+0
+87 450 181 80
+[FinObjetoGrafico]
+SysRecovery
+FProgRecovery();
+;
+;
+;
+;
+1
+0
+[ObjetoGrafico]
+[Version Objeto Grafico]
+0
+502 83 90 434
+[FinObjetoGrafico]
+AvObstaclesConfigured
+FProgTimerConfig();
+;
+;
+;
+;
+1
+0
+[ObjetoGrafico]
+[Version Objeto Grafico]
+0
+300 174 132 62
+[FinObjetoGrafico]
+PathTrackerConfigured
+FProgTimerConfig();
+;
+;
+;
+;
+1
+0
+[ObjetoGrafico]
+[Version Objeto Grafico]
+0
+303 369 128 60
+[FinObjetoGrafico]
+[PuntosEleccion]
+3
+[Version PuntosEleccion]
+2
+ConfigAvObstacles
+1
+[ObjetoGrafico]
+[Version Objeto Grafico]
+0
+345 96 35 35
+[FinObjetoGrafico]
+ConfigPathTracker
+1
+[ObjetoGrafico]
+[Version Objeto Grafico]
+0
+346 280 35 35
+[FinObjetoGrafico]
+ConfigPathPlanner
+1
+[ObjetoGrafico]
+[Version Objeto Grafico]
+0
+348 478 35 35
+[FinObjetoGrafico]
+ConfigAvObstacles
+1
+[Ramas]
+2
+[Version Ramas]
+5
+OK
+true
+AvObstaclesConfigured
+DSubEst
+;
+ 
+ 
+ 
+;
+;
+;
+;
+[GraficoRama]
+[Version GraficoRama]
+0
+362 130 362 174 2
+[FinGraficoRama]
+Error
+GConfigError()
+SysRecovery
+DSubEst
+FAvObstaclesError();
+ 
+ 
+ 
+;
+;
+;
+;
+[GraficoRama]
+[Version GraficoRama]
+0
+379 113 502 112 1
+[FinGraficoRama]
+ConfigPathTracker
+1
+[Ramas]
+2
+[Version Ramas]
+5
+OK
+true
+PathTrackerConfigured
+DSubEst
+;
+ 
+ 
+ 
+;
+;
+;
+;
+[GraficoRama]
+[Version GraficoRama]
+0
+363 314 363 369 2
+[FinGraficoRama]
+Error
+GConfigError()
+SysRecovery
+DSubEst
+FPathTrackerError();
+ 
+ 
+ 
+;
+;
+;
+;
+[GraficoRama]
+[Version GraficoRama]
+0
+380 297 502 298 0
+[FinGraficoRama]
+ConfigPathPlanner
+1
+[Ramas]
+2
+[Version Ramas]
+5
+OK
+true
+VehicleReady
+DSubEst
+;
+ 
+ 
+ 
+;
+FCStart();
+;
+;
+[GraficoRama]
+[Version GraficoRama]
+0
+348 495 268 494 3
+[FinGraficoRama]
+Error
+GConfigError()
+SysRecovery
+DSubEst
+FPathPlannerError();
+ 
+ 
+ 
+;
+;
+;
+;
+[GraficoRama]
+[Version GraficoRama]
+0
+382 495 502 496 0
+[FinGraficoRama]
+[Transiciones]
+6
+[Version Transicion]
+5
+Init
+I
+OSubEstI
+StartUp
+DSubEst
+FInit();
+[Trigger]
+EDROOMsl
+EDROOMStart
+true
+ 
+ 
+ 
+;
+;
+;
+0
+;
+[GraficoTransicion]
+[Version GraficoTransicion]
+0
+120 116 164 163 0
+[FinGraficoTransicion]
+ConfigAvObstacles
+StartUp
+OSubEst
+ConfigAvObstacles
+DPEleccion
+;
+[Trigger]
+Timer
+EDROOMSignalTimeout
+true
+ 
+ 
+ 
+;
+;
+FInvokeConfigAvObstacles();
+0
+;
+[GraficoTransicion]
+[Version GraficoTransicion]
+0
+235 138 352 98 1
+[FinGraficoTransicion]
+ReStart
+EDROOMEdge
+OBorde
+StartUp
+DSubEst
+;
+[Trigger]
+Timer
+EDROOMSignalTimeout
+true
+ 
+ 
+ 
+;
+;
+;
+0
+;
+[GraficoTransicion]
+[Version GraficoTransicion]
+0
+201 50 202 138 0
+[FinGraficoTransicion]
+ConfigPathTracker
+AvObstaclesConfigured
+OSubEst
+ConfigPathTracker
+DPEleccion
+;
+[Trigger]
+Timer
+EDROOMSignalTimeout
+true
+ 
+ 
+ 
+;
+;
+FInvokeConfigPathTracker();
+0
+;
+[GraficoTransicion]
+[Version GraficoTransicion]
+0
+362 236 363 280 0
+[FinGraficoTransicion]
+ConfigPathPlanner
+PathTrackerConfigured
+OSubEst
+ConfigPathPlanner
+DPEleccion
+;
+[Trigger]
+Timer
+EDROOMSignalTimeout
+true
+ 
+ 
+ 
+;
+;
+FInvokeConfigPathPlanner();
+0
+;
+[GraficoTransicion]
+[Version GraficoTransicion]
+0
+363 429 365 478 0
+[FinGraficoTransicion]
+ObstacleDetected
+VehicleReady
+OSubEst
+VehicleReady
+DSubEst
+;
+[Trigger]
+AvoidObstaclesSysCtrl
+SObstacleDetected
+true
+ 
+ 
+ 
+;
+FCHandleObstacle();
+;
+0
+;
+[GraficoTransicion]
+[Version GraficoTransicion]
+0
+111 450 233 450 4
+[FinGraficoTransicion]
+[VariablesConstantes]
+1
+[Version VariYConst]
+0
+VTargetLocation
+CDLocation
+
+Variable
+0
+[Metodos]
+19
+[Version Metodos]
+21
+BasicAction
+FAvObstaclesError()
+0
+0
+0
+0
+0
+5
+{
+ 
+	io_ctrl_config_avoid_obstacles_error();
+ 
+}
+CompositeSend
+FCHandleObstacle()
+0
+0
+0
+2
+FStopTracking();
+FMarkObstacle();
+CompositeSend
+FCStart()
+0
+0
+0
+3
+FStartPlanning();
+FStartTracking();
+FStartAvoidObs();
+CompositeAction
+FCStartUp()
+0
+0
+0
+2
+FStartUp();
+FProgTimerConfig();
+BasicAction
+FInit()
+0
+0
+0
+0
+1
+ 
+1
+io_ctrl_init();
+InvokeMsg
+FInvokeConfigAvObstacles()
+0
+0
+0
+0
+1
+ 
+0
+[ServiceRequest]
+invoke
+AvoidObstaclesSysCtrl
+SConfigAO
+NULL
+EDROOMprioVeryHigh
+InvokeMsg
+FInvokeConfigPathPlanner()
+0
+0
+0
+0
+1
+ 
+4
+	
+		// Complete Data 
+	
+	*pSConfigPathPlanner_Data=VTargetLocation;
+[ServiceRequest]
+invoke
+PathPlannerCtrl
+SConfigPathPlanner
+CDLocation
+EDROOMprioVeryHigh
+InvokeMsg
+FInvokeConfigPathTracker()
+0
+0
+0
+0
+1
+ 
+0
+[ServiceRequest]
+invoke
+PathTrackerCtrl
+SConfigPathTracker
+NULL
+EDROOMprioVeryHigh
+SendMsg
+FMarkObstacle()
+0
+0
+0
+0
+1
+ 
+4
+	
+		// Complete Data 
+	
+	*pSMarkObstacle_Data=sensors_get_current_location();
+[ServiceRequest]
+send
+PathPlannerCtrl
+SMarkObstacle
+CDLocation
+EDROOMprioNormal
+BasicAction
+FPathPlannerError()
+0
+0
+0
+0
+0
+6
+{
+ 
+	io_ctrl_config_path_planner_error();
+ 
+ 
+}
+BasicAction
+FPathTrackerError()
+0
+0
+0
+0
+0
+5
+{
+ 
+	io_ctrl_path_tracker_error();
+ 
+}
+Inform
+FProgRecovery()
+0
+0
+0
+0
+1
+ 
+9
+	
+	time.GetTime();
+ 
+	// Timing Service 
+	 
+	time+=Pr_Time(10,0);  // seconds
+	 
+	
+	io_ctrl_recovery();
+[ServiceRequest]
+InformAt
+Timer
+EDROOMSignalTimeout
+CDLocation
+EDROOMprioVeryHigh
+Inform
+FProgTimerConfig()
+0
+0
+0
+0
+1
+ 
+4
+	 
+	//Timing Service useful methods
+	 
+   interval = Pr_Time(1,0); // interval of X sec + Y microsec
+[ServiceRequest]
+InformIn
+Timer
+EDROOMSignalTimeout
+NULL
+EDROOMprioVeryHigh
+SendMsg
+FStartAvoidObs()
+0
+0
+0
+0
+1
+ 
+0
+[ServiceRequest]
+send
+AvoidObstaclesSysCtrl
+SStart
+NULL
+EDROOMprioNormal
+SendMsg
+FStartPlanning()
+0
+0
+0
+0
+1
+ 
+0
+[ServiceRequest]
+send
+PathPlannerCtrl
+SStartPlanning
+NULL
+EDROOMprioNormal
+SendMsg
+FStartTracking()
+0
+0
+0
+0
+1
+ 
+0
+[ServiceRequest]
+send
+PathTrackerCtrl
+SStartTracking
+NULL
+EDROOMprioNormal
+BasicAction
+FStartUp()
+0
+0
+0
+0
+0
+17
+{
+ 
+	VTargetLocation=sensors_get_current_location();
+ 
+	if(VTargetLocation.latitude>0) 
+		VTargetLocation.latitude-=0.1;
+	else
+		VTargetLocation.latitude+=0.1;
+ 
+	if(VTargetLocation.longitude>0) 
+		VTargetLocation.longitude-=0.1;
+	else
+		VTargetLocation.longitude+=0.1;	
+ 
+	io_ctrl_startup();
+ 	  
+}
+SendMsg
+FStopTracking()
+0
+0
+0
+0
+1
+ 
+0
+[ServiceRequest]
+send
+PathTrackerCtrl
+SStopTracking
+NULL
+EDROOMprioNormal
+Guard
+GConfigError()
+0
+0
+0
+0
+1
+ 
+1
+return(MsgBack->signal==SConfigError);
+[MaquinasSubEstados]
+0
+[FinMaquinasSubEstados]
+[Fin Maquina de Estados]
+[FinComportamiento]

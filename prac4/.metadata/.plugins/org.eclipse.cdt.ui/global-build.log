@@ -1,0 +1,75 @@
+00:02:58 **** Clean-only build of configuration Debug for project prac4b ****
+rm -rf 
+Info: Nothing to build for prac4
+00:03:34 **** Rebuild of configuration Debug for project prac4b ****
+Info: Internal Builder is used for build
+sparc-elf-gcc -I/home/espectro90/Desktop/SistemasEmpotrados/Practica_4/prac4b/include -O0 -g3 -Wall -msoft-float -c -fmessage-length=0 -o src/leon3_uart.o ../src/leon3_uart.c 
+sparc-elf-gcc -I/home/espectro90/Desktop/SistemasEmpotrados/Practica_4/prac4b/include -O0 -g3 -Wall -msoft-float -c -fmessage-length=0 -o src/leon3_timer_unit_drv.o ../src/leon3_timer_unit_drv.c 
+sparc-elf-gcc -I/home/espectro90/Desktop/SistemasEmpotrados/Practica_4/prac4b/include -O0 -g3 -Wall -msoft-float -c -fmessage-length=0 -o src/leon3_bprint.o ../src/leon3_bprint.c 
+sparc-elf-gcc -I/home/espectro90/Desktop/SistemasEmpotrados/Practica_4/prac4b/include -O0 -g3 -Wall -msoft-float -c -fmessage-length=0 -o src/leon3_timing_service.o ../src/leon3_timing_service.c 
+sparc-elf-gcc -I/home/espectro90/Desktop/SistemasEmpotrados/Practica_4/prac4b/include -O0 -g3 -Wall -msoft-float -c -fmessage-length=0 -o src/leon3_monotonic_clk.o ../src/leon3_monotonic_clk.c 
+sparc-elf-gcc -I/home/espectro90/Desktop/SistemasEmpotrados/Practica_4/prac4b/include -O0 -g3 -Wall -msoft-float -c -fmessage-length=0 -o src/leon3_hw_irqs.o ../src/leon3_hw_irqs.c 
+sparc-elf-gcc -I/home/espectro90/Desktop/SistemasEmpotrados/Practica_4/prac4b/include -O0 -g3 -Wall -msoft-float -c -fmessage-length=0 -o src/leon3_ev_handling_asm.o ../src/leon3_ev_handling_asm.S 
+sparc-elf-gcc -I/home/espectro90/Desktop/SistemasEmpotrados/Practica_4/prac4b/include -O0 -g3 -Wall -msoft-float -c -fmessage-length=0 -o src/leon3_ev_handling.o ../src/leon3_ev_handling.c 
+sparc-elf-gcc -I/home/espectro90/Desktop/SistemasEmpotrados/Practica_4/prac4b/include -O0 -g3 -Wall -msoft-float -c -fmessage-length=0 -o src/main.o ../src/main.c 
+sparc-elf-gcc -msoft-float -o prac4b src/main.o src/leon3_uart.o src/leon3_timing_service.o src/leon3_timer_unit_drv.o src/leon3_monotonic_clk.o src/leon3_hw_irqs.o src/leon3_ev_handling_asm.o src/leon3_ev_handling.o src/leon3_bprint.o 
+Info: Nothing to build for prac4c
+Info: Nothing to build for prac4b
+Info: Nothing to build for prac4
+00:07:31 **** Incremental Build of configuration Debug for project prac4b ****
+Info: Internal Builder is used for build
+sparc-elf-gcc -I/home/espectro90/Desktop/SistemasEmpotrados/Practica_4/prac4b/include -O0 -g3 -Wall -msoft-float -c -fmessage-length=0 -o src/leon3_timing_service.o ../src/leon3_timing_service.c 
+sparc-elf-gcc -msoft-float -o prac4b src/main.o src/leon3_uart.o src/leon3_timing_service.o src/leon3_timer_unit_drv.o src/leon3_monotonic_clk.o src/leon3_hw_irqs.o src/leon3_ev_handling_asm.o src/leon3_ev_handling.o src/leon3_bprint.o 
+Info: Nothing to build for prac4c
+Info: Nothing to build for prac4
+Info: Nothing to build for prac4b
+Info: Nothing to build for prac4c
+Info: Nothing to build for prac4b
+Info: Nothing to build for prac4
+00:11:41 **** Incremental Build of configuration Debug for project prac4b ****
+Info: Internal Builder is used for build
+sparc-elf-gcc -I/home/espectro90/Desktop/SistemasEmpotrados/Practica_4/prac4b/include -O0 -g3 -Wall -msoft-float -c -fmessage-length=0 -o src/leon3_monotonic_clk.o ../src/leon3_monotonic_clk.c 
+sparc-elf-gcc -msoft-float -o prac4b src/main.o src/leon3_uart.o src/leon3_timing_service.o src/leon3_timer_unit_drv.o src/leon3_monotonic_clk.o src/leon3_hw_irqs.o src/leon3_ev_handling_asm.o src/leon3_ev_handling.o src/leon3_bprint.o 
+Info: Nothing to build for prac4c
+Info: Nothing to build for prac4
+00:11:44 **** Incremental Build of configuration Debug for project prac4b ****
+Info: Internal Builder is used for build
+sparc-elf-gcc -I/home/espectro90/Desktop/SistemasEmpotrados/Practica_4/prac4b/include -O0 -g3 -Wall -msoft-float -c -fmessage-length=0 -o src/leon3_timer_unit_drv.o ../src/leon3_timer_unit_drv.c 
+sparc-elf-gcc -msoft-float -o prac4b src/main.o src/leon3_uart.o src/leon3_timing_service.o src/leon3_timer_unit_drv.o src/leon3_monotonic_clk.o src/leon3_hw_irqs.o src/leon3_ev_handling_asm.o src/leon3_ev_handling.o src/leon3_bprint.o 
+Info: Nothing to build for prac4c
+Info: Nothing to build for prac4b
+Info: Nothing to build for prac4
+00:12:39 **** Incremental Build of configuration Debug for project prac4b ****
+Info: Internal Builder is used for build
+sparc-elf-gcc -I/home/espectro90/Desktop/SistemasEmpotrados/Practica_4/prac4b/include -O0 -g3 -Wall -msoft-float -c -fmessage-length=0 -o src/leon3_timer_unit_drv.o ../src/leon3_timer_unit_drv.c 
+sparc-elf-gcc -msoft-float -o prac4b src/main.o src/leon3_uart.o src/leon3_timing_service.o src/leon3_timer_unit_drv.o src/leon3_monotonic_clk.o src/leon3_hw_irqs.o src/leon3_ev_handling_asm.o src/leon3_ev_handling.o src/leon3_bprint.o 
+Info: Nothing to build for prac4c
+Info: Nothing to build for prac4
+Info: Nothing to build for prac4b
+Info: Nothing to build for prac4c
+Info: Nothing to build for prac4b
+Info: Nothing to build for prac4
+00:15:35 **** Incremental Build of configuration Debug for project prac4b ****
+Info: Internal Builder is used for build
+sparc-elf-gcc -I/home/espectro90/Desktop/SistemasEmpotrados/Practica_4/prac4b/include -O0 -g3 -Wall -msoft-float -c -fmessage-length=0 -o src/leon3_timer_unit_drv.o ../src/leon3_timer_unit_drv.c 
+sparc-elf-gcc -msoft-float -o prac4b src/main.o src/leon3_uart.o src/leon3_timing_service.o src/leon3_timer_unit_drv.o src/leon3_monotonic_clk.o src/leon3_hw_irqs.o src/leon3_ev_handling_asm.o src/leon3_ev_handling.o src/leon3_bprint.o 
+Info: Nothing to build for prac4c
+Info: Nothing to build for prac4b
+Info: Nothing to build for prac4
+Info: Nothing to build for prac4b
+00:16:41 **** Incremental Build of configuration Debug for project prac4c ****
+Info: Internal Builder is used for build
+sparc-elf-gcc -I/home/espectro90/Desktop/SistemasEmpotrados/Practica_4/prac4c/include -O0 -g3 -Wall -msoft-float -c -fmessage-length=0 -o src/leon3_timer_unit_drv.o ../src/leon3_timer_unit_drv.c 
+sparc-elf-gcc -msoft-float -o prac4c src/main.o src/leon3_uart.o src/leon3_timing_service.o src/leon3_timer_unit_drv.o src/leon3_monotonic_clk.o src/leon3_hw_irqs.o src/leon3_ev_handling_asm.o src/leon3_ev_handling.o src/leon3_bprint.o 
+Info: Nothing to build for prac4c
+Info: Nothing to build for prac4
+Info: Nothing to build for prac4b
+Info: Nothing to build for prac4c
+Info: Nothing to build for prac4c
+Info: Nothing to build for prac4
+Info: Nothing to build for prac4b
+19:20:24 **** Incremental Build of configuration Debug for project prac4c ****
+Info: Internal Builder is used for build
+sparc-elf-gcc -I/home/espectro90/Desktop/SistemasEmpotrados/Practica_4/prac4c/include -O0 -g3 -Wall -msoft-float -c -fmessage-length=0 -o src/main.o ../src/main.c 
+sparc-elf-gcc -msoft-float -o prac4c src/main.o src/leon3_uart.o src/leon3_timing_service.o src/leon3_timer_unit_drv.o src/leon3_monotonic_clk.o src/leon3_hw_irqs.o src/leon3_ev_handling_asm.o src/leon3_ev_handling.o src/leon3_bprint.o 
+Info: Nothing to build for prac4c

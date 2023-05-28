@@ -1,0 +1,14 @@
+package iface;
+
+inport es.uah.aut.srg.micobs.langs;
+
+sai cdpath_iface
+{
+
+
+
+	version := v1;
+	language := CPP(98);
+
+
+};

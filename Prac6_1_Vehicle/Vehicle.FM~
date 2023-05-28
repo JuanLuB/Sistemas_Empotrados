@@ -1,0 +1,191 @@
+[Version Proyecto]
+4
+[Modelo]
+[Version]
+3
+[Nombre Modelo]
+Vehicle
+[Modificado]
+0
+[Opciones Modelo]
+[Version Opciones Modelo]
+4
+[AnadirInfDep]
+0
+[MemDin]
+1
+[HandleExcep]
+0
+[CurrentTarget]
+0
+[MESP Directory]
+c:\users\espectro90\My Documents\EclipseWorkspace\prac6_students
+[MESP main Directory]
+c:\users\espectro90\My Documents\EclipseWorkspace\prac6_students
+[MESP main prototype]
+rtems_task Init (uint32_t arg)
+[MESP main return]
+;
+[Dyn Priority]
+0
+[Main Cmp Priority]
+EDROOMprioVeryHigh
+[Deployment Prologue]
+0
+[Deployment Ephilogue]
+0
+[FinOpciones Modelo]
+[Recursos]
+[NumTask]
+0
+[NumSemRec]
+0
+[NumSemBin]
+0
+[TotalTaskSize]
+0
+[FinRecursos]
+[Modelo Asociados]
+0
+[Bibliotecas Asociadas]
+0
+[Maquinas del Modelo]
+1
+[Version Maquina]
+0
+EDROOMTarget
+55
+1
+[Deployment]
+[Version]
+2
+DUMMY_MESCC_Lib
+4
+[ActorDeployment]
+[Version]
+1
+MainActor
+1
+10
+EDROOMprioVeryHigh
+ 
+Vehicle
+NULL
+[EventsDeployment]
+1
+[EventDeployment]
+[Version]
+1
+EvTimerTimer
+Timer
+1
+1
+0
+0
+[CEgRoomDeadLine]
+[Version]
+1
+-1
+-1
+0
+0
+[ActorDeployment]
+[Version]
+1
+PathPlanner
+2
+10
+EDROOMprioVeryLow
+ 
+CAPathPlanner
+Vehicle
+[EventsDeployment]
+1
+[EventDeployment]
+[Version]
+1
+EvTimerTimer
+Timer
+2
+1
+0
+0
+[CEgRoomDeadLine]
+[Version]
+1
+-1
+-1
+0
+0
+[ActorDeployment]
+[Version]
+1
+PathTracker
+3
+10
+EDROOMprioNormal
+ 
+CAPathTracker
+Vehicle
+[EventsDeployment]
+1
+[EventDeployment]
+[Version]
+1
+EvTimerTimer
+Timer
+3
+1
+0
+0
+[CEgRoomDeadLine]
+[Version]
+1
+-1
+-1
+0
+0
+[ActorDeployment]
+[Version]
+1
+AvoidObstacles
+4
+10
+EDROOMprioNormal
+ 
+CCAvoidObstacles
+Vehicle
+[EventsDeployment]
+1
+[EventDeployment]
+[Version]
+1
+EvTimerTimer
+Timer
+4
+1
+0
+0
+[CEgRoomDeadLine]
+[Version]
+1
+-1
+-1
+0
+0
+[EventDeployment]
+[Version]
+1
+EvEDROOMStart
+External
+0
+1
+0
+0
+[CEgRoomDeadLine]
+[Version]
+1
+-1
+-1
+0
+0

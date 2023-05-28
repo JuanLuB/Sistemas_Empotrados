@@ -1,0 +1,743 @@
+[Version Actor SW]
+5
+0
+0
+0
+0
+[Modificado]
+0
+0
+0
+[Estructura]
+[Version Estructura]
+3
+[Parametro]
+NULL
+ 
+ 
+[FinParametro]
+[Stack]
+2
+[FinStack]
+[Puertos]
+3
+[Version Puerto]
+0
+PathPlannerCtrl
+0
+1
+0
+[Version Grafico Puerto]
+0
+47
+4
+CPPathPlannerCtrl
+[Version Puerto]
+0
+TrackPath
+1
+1
+0
+[Version Grafico Puerto]
+0
+39
+93
+CPTrackPath
+[Version Puerto]
+0
+Timer
+0
+1
+1
+[Version Grafico Puerto]
+0
+55
+37
+EDROOMTimingSAP
+[FinPuertos]
+[ActoresComponente]
+0
+[FinActoresComponente]
+[Uniones]
+0
+[FinUniones]
+[NumTimers]
+2
+[FinNumTimers]
+[NumMsgDef]
+10
+[FinNumMsgDef]
+[FinEstructura]
+[Comportamiento]
+[Version Comportamiento]
+3
+0
+[Pools]
+1
+[Version PoolDatosMens]
+0
+EDROOMPoolCDPath
+CDPath
+3
+[Modulos]
+4
+[Version Modulo]
+1
+sensors_iface
+ 
+v1
+ 
+1
+1
+[Version Modulo]
+1
+actuators_iface
+ 
+v1
+ 
+1
+1
+[Version Modulo]
+1
+planner_iface
+ 
+v1
+ 
+1
+1
+[Version Modulo]
+1
+io_ctrl_iface
+ 
+v1
+ 
+1
+1
+[Eventos]
+1
+[Event]
+[Version]
+1
+EvTimerTimer
+Timer
+[Maquina de Estados]
+[Version Maquina de Estados]
+1
+Top
+NULL
+[Subestados]
+4
+[Version SubEstados]
+3
+I
+;
+;
+;
+;
+;
+0
+0
+[ObjetoGrafico]
+[Version Objeto Grafico]
+0
+73 73 55 55
+[FinObjetoGrafico]
+Idle
+;
+;
+;
+;
+;
+1
+0
+[ObjetoGrafico]
+[Version Objeto Grafico]
+0
+278 88 90 100
+[FinObjetoGrafico]
+CalculatePath
+;
+;
+;
+;
+;
+1
+0
+[ObjetoGrafico]
+[Version Objeto Grafico]
+0
+298 255 223 121
+[FinObjetoGrafico]
+CalNextPath
+;
+;
+FProgNextStep();
+;
+;
+1
+0
+[ObjetoGrafico]
+[Version Objeto Grafico]
+0
+99 321 96 211
+[FinObjetoGrafico]
+[PuntosEleccion]
+2
+[Version PuntosEleccion]
+2
+Config
+0
+[ObjetoGrafico]
+[Version Objeto Grafico]
+0
+469 117 35 35
+[FinObjetoGrafico]
+CalStep
+0
+[ObjetoGrafico]
+[Version Objeto Grafico]
+0
+391 436 35 35
+[FinObjetoGrafico]
+Config
+0
+[Ramas]
+2
+[Version Ramas]
+5
+Error
+VSimError
+Idle
+DSubEst
+;
+ 
+ 
+ 
+;
+;
+FReplySimError();
+;
+[GraficoRama]
+[Version GraficoRama]
+0
+471 124 368 97 3
+[FinGraficoRama]
+OK
+true
+Idle
+DSubEst
+;
+ 
+ 
+ 
+;
+;
+FReplyConfigOK();
+;
+[GraficoRama]
+[Version GraficoRama]
+0
+486 151 368 178 2
+[FinGraficoRama]
+CalStep
+0
+[Ramas]
+3
+[Version Ramas]
+5
+SendMinPath
+GSendMinPath()
+CalculatePath
+DSubEst
+FProgNextStep();
+ 
+ 
+ 
+;
+FSendNextPath();
+;
+;
+[GraficoRama]
+[Version GraficoRama]
+0
+425 453 500 376 1
+[FinGraficoRama]
+NextStep
+true
+CalculatePath
+DSubEst
+FProgNextStep();
+ 
+ 
+ 
+;
+;
+;
+;
+[GraficoRama]
+[Version GraficoRama]
+0
+392 446 312 376 3
+[FinGraficoRama]
+MaxStep
+GMaxSteps()
+CalNextPath
+DSubEst
+FMaxSteps();
+ 
+ 
+ 
+;
+;
+;
+;
+[GraficoRama]
+[Version GraficoRama]
+0
+391 453 195 454 2
+[FinGraficoRama]
+[Transiciones]
+7
+[Version Transicion]
+5
+Init
+I
+OSubEstI
+Idle
+DSubEst
+;
+[Trigger]
+EDROOMsl
+EDROOMStart
+true
+ 
+ 
+ 
+;
+;
+;
+0
+;
+[GraficoTransicion]
+[Version GraficoTransicion]
+0
+115 120 278 127 0
+[FinGraficoTransicion]
+Config
+Idle
+OSubEst
+Config
+DPEleccion
+FConfigPlanner();
+[Trigger]
+PathPlannerCtrl
+SConfigPathPlanner
+true
+ 
+ 
+ 
+;
+;
+;
+1
+;
+[GraficoTransicion]
+[Version GraficoTransicion]
+0
+368 147 470 142 1
+[FinGraficoTransicion]
+CalStep
+CalculatePath
+OSubEst
+CalStep
+DPEleccion
+FCalPathStep();
+[Trigger]
+Timer
+EDROOMSignalTimeout
+true
+ 
+ 
+ 
+;
+;
+;
+0
+;
+[GraficoTransicion]
+[Version GraficoTransicion]
+0
+409 376 408 436 2
+[FinGraficoTransicion]
+Start
+Idle
+OSubEst
+CalculatePath
+DSubEst
+FProgNextStep();
+[Trigger]
+PathPlannerCtrl
+SStartPlanning
+true
+ 
+ 
+ 
+;
+;
+;
+0
+;
+[GraficoTransicion]
+[Version GraficoTransicion]
+0
+319 188 403 255 0
+[FinGraficoTransicion]
+NewTar
+EDROOMEdge
+OBorde
+CalculatePath
+DSubEst
+;
+[Trigger]
+PathPlannerCtrl
+SNewTargetLocation
+true
+ 
+ 
+ 
+FNewTarget();
+;
+;
+0
+;
+[GraficoTransicion]
+[Version GraficoTransicion]
+0
+695 296 521 295 3
+[FinGraficoTransicion]
+PatRequest
+EDROOMEdge
+OBorde
+CalculatePath
+DSubEst
+;
+[Trigger]
+TrackPath
+SPathRequest
+true
+ 
+ 
+ 
+;
+FSendNextPath();
+;
+0
+;
+[GraficoTransicion]
+[Version GraficoTransicion]
+0
+695 338 521 338 2
+[FinGraficoTransicion]
+ObsTDetected
+EDROOMEdge
+OBorde
+CalculatePath
+DSubEst
+FReplanning();
+[Trigger]
+PathPlannerCtrl
+SMarkObstacle
+true
+ 
+ 
+ 
+FMarkObstacle();
+;
+;
+0
+;
+[GraficoTransicion]
+[Version GraficoTransicion]
+0
+695 318 521 318 2
+[FinGraficoTransicion]
+[VariablesConstantes]
+7
+[Version VariYConst]
+0
+VMaxPathSteps
+TEDROOMUInt8
+8
+Constante
+0
+[Version VariYConst]
+0
+VMinPathSteps
+TEDROOMUInt8
+3
+Constante
+0
+[Version VariYConst]
+0
+VNextPath
+CDPath
+
+Variable
+0
+[Version VariYConst]
+0
+VNextStepStartPoing
+CDLocation
+
+Variable
+0
+[Version VariYConst]
+0
+VSimError
+TEDROOMUInt8
+1
+Variable
+0
+[Version VariYConst]
+0
+VTargetLocation
+CDLocation
+
+Variable
+0
+[Version VariYConst]
+0
+VVehicleHalted
+TEDROOMBool
+true
+Variable
+0
+[Metodos]
+12
+[Version Metodos]
+21
+BasicAction
+FCalPathStep()
+0
+0
+0
+0
+0
+9
+{
+		io_ctrl_cal_step();
+ 
+ 		VNextPath.pathLocations[VNextPath.pathSteps]
+					=calNextPathStep(VNextStepStartPoing, VTargetLocation);
+ 
+		VNextPath.pathSteps++;
+ 
+}
+BasicAction
+FConfigPlanner()
+0
+0
+0
+0
+0
+7
+{
+ 
+	VTargetLocation = *(CDLocation *)Msg->data;
+ 
+	
+ 
+}
+MsgDataHandler
+FMarkObstacle()
+0
+0
+0
+0
+1
+ 
+4
+	
+		// Data access
+ 
+  markObstacle(varSMarkObstacle);
+[ServiceRequest]
+Msg->data
+PathPlannerCtrl
+SMarkObstacle
+CDLocation
+EDROOMprioNormal
+BasicAction
+FMaxSteps()
+0
+0
+0
+0
+0
+7
+{
+ 
+ io_ctrl_max_num_of_step();
+ 
+ 
+ 
+}
+MsgDataHandler
+FNewTarget()
+0
+0
+0
+0
+1
+ 
+11
+	
+		// Data acces
+ 
+	VTargetLocation = varSNewTargetLocation;
+ 
+	VVehicleHalted=true;	
+	actuators_halt();
+ 
+	VNextStepStartPoing=sensors_get_current_location();
+ 
+	VNextPath.pathSteps=0;
+[ServiceRequest]
+Msg->data
+PathPlannerCtrl
+SNewTargetLocation
+CDLocation
+EDROOMprioNormal
+Inform
+FProgNextStep()
+0
+0
+0
+0
+1
+ 
+4
+	 
+	//Timing Service useful methods
+	 
+   interval = Pr_Time(0,100000); // interval of X sec + Y microsec
+[ServiceRequest]
+InformIn
+Timer
+EDROOMSignalTimeout
+CDLocation
+EDROOMprioVeryHigh
+BasicAction
+FReplanning()
+0
+0
+0
+0
+0
+8
+{
+ 
+   VVehicleHalted=true;
+ 
+   VNextStepStartPoing=sensors_get_current_location();
+   VNextPath.pathSteps=0;
+ 
+}
+ReplyMsg
+FReplyConfigOK()
+0
+0
+0
+0
+1
+ 
+5
+  VNextStepStartPoing=sensors_get_current_location();
+ 
+  VVehicleHalted=true;	
+		
+  VNextPath.pathSteps=0;
+[ServiceRequest]
+Msg->reply
+PathPlannerCtrl
+SConfigOK
+NULL
+EDROOMprioVeryHigh
+ReplyMsg
+FReplySimError()
+0
+0
+0
+0
+1
+ 
+3
+ 
+ 
+ VSimError--;
+[ServiceRequest]
+Msg->reply
+PathPlannerCtrl
+SConfigError
+NULL
+EDROOMprioVeryHigh
+SendMsg
+FSendNextPath()
+0
+0
+0
+0
+1
+ 
+10
+	
+		// Complete Data 
+	
+	*pSTrackPath_Data=VNextPath;
+ 
+	VVehicleHalted=false;	
+ 
+	VNextPath.pathSteps=0;
+ 
+ 	io_ctrl_next_path();
+[ServiceRequest]
+send
+TrackPath
+STrackPath
+CDPath
+EDROOMprioNormal
+Guard
+GMaxSteps()
+0
+0
+0
+0
+0
+7
+{
+ 
+ 
+ return (VNextPath.pathSteps==VMaxPathSteps);
+ 
+ 
+}
+Guard
+GSendMinPath()
+0
+0
+0
+0
+0
+7
+{
+ 
+ 
+ 	return ((VVehicleHalted)&&(VNextPath.pathSteps>=VMinPathSteps));
+ 
+ 
+}
+[MaquinasSubEstados]
+0
+[FinMaquinasSubEstados]
+[Fin Maquina de Estados]
+[FinComportamiento]

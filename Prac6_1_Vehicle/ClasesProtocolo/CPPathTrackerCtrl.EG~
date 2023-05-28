@@ -1,0 +1,72 @@
+[Version Protocolo]
+9
+0
+0
+0
+0
+0
+3
+[Version Mensaje]
+1
+[Version Senal]
+0
+SStartTracking
+[Version Dato]
+1
+NULL
+Z:\home\espectro90\Documents\EDROOM\Models\Prac6_1_Vehicle\
+es.uah.aut.srg.edroom.mclev.data_sai.NULL
+v1
+0
+[Version Mensaje]
+1
+[Version Senal]
+0
+SStopTracking
+[Version Dato]
+1
+NULL
+Z:\home\espectro90\Documents\EDROOM\Models\Prac6_1_Vehicle\
+es.uah.aut.srg.edroom.mclev.data_sai.NULL
+v1
+0
+[Version Mensaje]
+1
+[Version Senal]
+0
+SConfigPathTracker
+[Version Dato]
+1
+NULL
+Z:\home\espectro90\Documents\EDROOM\Models\Prac6_1_Vehicle\
+es.uah.aut.srg.edroom.mclev.data_sai.NULL
+v1
+1
+2
+[Version Mensaje]
+1
+[Version Senal]
+0
+SConfigOK
+[Version Dato]
+1
+NULL
+Z:\home\espectro90\Documents\EDROOM\Models\Prac6_1_Vehicle\
+es.uah.aut.srg.edroom.mclev.data_sai.NULL
+v1
+2
+SConfigPathTracker
+[Version Mensaje]
+1
+[Version Senal]
+0
+SConfigError
+[Version Dato]
+1
+NULL
+Z:\home\espectro90\Documents\EDROOM\Models\Prac6_1_Vehicle\
+es.uah.aut.srg.edroom.mclev.data_sai.NULL
+v1
+2
+SConfigPathTracker
+0
